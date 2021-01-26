@@ -1,0 +1,260 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  CFM 1e-07
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      softCFM 1e-07
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.28353538481651164 -0.9413428506595276 -0.18297902357687595 1.234456471154794
+  position -0.46425208825062503 0.2520145898596358 0.3426022235871344
+}
+OilBarrel {
+  translation 0.010000000000000002 0.04999884582770247 0.3
+  rotation 0.5671526199515832 0.5553689225724706 0.608196732581447 5.74252481474334e-17
+  height 0.1
+  radius 0.1
+  physics Physics {
+  }
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0 0.11
+  floorSize 5 5
+}
+DEF four_wheel_car Robot {
+  translation 0.003328330001861953 0.039998915087673094 0.05045805132761485
+  rotation 7.539326984525083e-08 -0.9999999999999916 -1.057225464151875e-07 0.578743334345849
+  children [
+    DEF ds_left DistanceSensor {
+      translation 0.03 0 0.1
+      rotation 0 1 0 -1.2708
+      children [
+        DEF distance_sensor_shape Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 0.999939 0.0410315
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      recognitionColors [
+        0 0 0
+      ]
+    }
+    DEF ds_right DistanceSensor {
+      translation -0.03 0 0.1
+      rotation 0 1 0 -1.808
+      children [
+        DEF distance_sensor_shape Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 1 0.999939 0.0410315
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      recognitionColors [
+        0 0 0
+      ]
+    }
+    DEF rr_wheel_4 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.0158144257750865e-05
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "rr_wheel_4"
+        }
+        DEF rr_wheel_position_sensor PositionSensor {
+          name "rr_ps_4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 -4.755628610080552e-09 -0.05000000000009573
+        rotation 1.0079035105290658e-05 -1.0079072128271334e-05 0.9999999998984126 1.5708000001015834
+        children [
+          DEF rr_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.986252 0.00712596 0.0274357
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "rr_wheel_solid"
+        boundingObject USE rr_wheel
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+        linearVelocity 0.03183112311671845 5.274778465036441e-08 -0.009118086904593632
+        angularVelocity -0.840514773973486 -0.3921244967541781 -0.5418259558109823
+      }
+    }
+    DEF lf_wheel_1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.495979887786863
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "lf_wheel_1"
+        }
+        DEF lf_wheel_position_sensor PositionSensor {
+          name "lf_ps_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 0.05
+        rotation 0.6881181508385389 -0.6881206784422843 0.23018110779705633 2.689113480040109
+        children [
+          DEF lf_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.986252 0.00712596 0.0274357
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "lf_wheel_solid"
+        boundingObject USE lf_wheel
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+        linearVelocity -0.026499084923154573 7.162817240669047e-08 0.009118073173940141
+        angularVelocity 0.8405146037237681 -0.3921246425890911 0.5418262202105492
+      }
+    }
+    DEF lr_wheel_3 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.495979866212964
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "lr_wheel_3"
+        }
+        DEF lf_wheel_position_sensor PositionSensor {
+          name "lr_ps_3"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 -0.05
+        rotation 0.6881181495310625 -0.6881206771348031 0.23018111561439286 2.689113465192181
+        children [
+          DEF lf_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.986252 0.00712596 0.0274357
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "lr_wheel_solid"
+        boundingObject USE lf_wheel
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+        linearVelocity 0.006375343056195801 7.160712465292807e-08 0.030331278518359362
+        angularVelocity 0.8405145293478503 -0.39212468325723626 0.5418261747165188
+      }
+    }
+    DEF rf_wheel_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.013332662689077e-05
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "rf_wheel_2"
+        }
+        DEF rf_wheel_position_sensor PositionSensor {
+          name "rf_ps_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0 0.05
+        rotation 1.006663192323493e-05 -1.0066668900400079e-05 0.9999999998986625 1.5708000001013362
+        children [
+          DEF lf_wheel Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.986252 0.00712596 0.0274357
+              }
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "rf_wheel_solid"
+        boundingObject USE lf_wheel
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+        linearVelocity -0.0010433022997539676 5.2758962908683596e-08 -0.03033129623358897
+        angularVelocity -0.8405146995977466 -0.392124537421734 -0.5418259103169561
+      }
+    }
+    DEF body Transform {
+      children [
+        DEF body_shape Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.13135 0.99968 0.023621
+            }
+          }
+          geometry Box {
+            size 0.1 0.05 0.2
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject DEF body Group {
+    children [
+      USE distance_sensor_shape
+      USE lf_wheel
+      USE body_shape
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 10
+  }
+  controller "four_wheel_sim"
+  linearVelocity 0.002666020378433957 6.199655076670741e-08 -8.875988257595023e-09
+  angularVelocity -8.48952528643016e-08 -0.39106512546566635 1.3198699355674902e-07
+}
